@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹게임</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!--남의 코드 불러올때 스크립트로 불러 온다. -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        'use strict';
+        function LikeButton(){
+            //class로 생성했을때 constructor 안의 "this.state = {liked : false}"와
+            //render 안의 "this.setState()" 역할을 동시에 하는 useState 함수
+            const [liked, setLiked] = React.useState(false); //구조분해 문법
+            //const {liked, setLiked} = React.useState(false);
+            //구조분해가 객체도 되긴 한데, 배열이냐 객체냐는 완전 천지 차이라서 반드시 배열로 해야한다.
+            //나중에 쓰는 코드니까 구별을 할 줄 알아야한다.
+
+            if (liked){
+                return "You Liked This";
+            }
+            return (
+                <button onClick={()=>{ setLiked(true)}}>Like</button>
+            )
+        }
+    </script>
+    <script type="text/babel">
+        //ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+        ReactDOM.createRoot(document.querySelector('#root')).render(
+            <div>
+                <LikeButton/>
+            </div>
+        )
+    </script>
+</body>
+</html>

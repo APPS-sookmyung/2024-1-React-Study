@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--바벨 불러오기-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const ShoppingList = () => {
+            const [product, setProduct] = React.useState("");
+            const [price, setPrice] = React.useState("");
+            const [num, setNum] = React.useState("");
+            const [total, setTotal] = React.useState(0);
+            const [rec, setRec] = React.useState([]);
+            const productInputEl = React.useRef(null);
+
+            const submitFun = () => {
+                setRec(prevArray => [...prevArray, [product, price, num]]);
+                setTotal(prev => prev + (price*num));
+
+                setProduct("");
+                setNum("");
+                setPrice("");
+
+                productInputEl.current.focus();
+            }
+
+            return (
+                <React.Fragment>
+                    <h1>나의 쇼핑리스트🛒</h1>
+                    <input type="text" placeholder="물품" value={product} onChange={(e)=>{setProduct(e.target.value)}} ref={productInputEl}/>
+                    <input type="number" placeholder="가격" value={price} onChange={(e)=>{setPrice(e.target.value)}}/>
+                    <input type="number" placeholder="갯수" value={num} onChange={(e)=>{setNum(e.target.value)}} onKeyPress={(e)=>{if (e.key=="Enter") submitFun()}}/>
+                    <input type="submit" onClick={submitFun}/>
+                    <ul>
+                        {rec.map((object, i)=>{return <li key={i}>{object[0]} {object[1]}원 {object[2]}개</li>})}
+                    </ul>
+                    <p>준비해야하는 돈: {total}원</p>
+                </React.Fragment>
+            );
+        }
+    </script>
+    <script type="text/babel">
+        ReactDOM.createRoot(document.querySelector("#root")).render(
+            <ShoppingList/>
+        )
+    </script>
+</body>
+</html>
