@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>김준희의 구구단</title>
+    <link rel="stylesheet" href="Gugudan.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel"> // type="text/babel"을 쓰는 이유?
+        const GuGudan = () => { // 화살표 함수를 쓰는 이유?
+            const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+            const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+            const [inputValue, setInputValue] = React.useState("");
+            const [result, setResult] = React.useState("");
+            const [score, setScore] = React.useState(0);
+            const inputEl = React.useRef(null);
+
+            const onSubmitForm = (e) => {
+                e.preventDefault(); // 기본 submit 무시
+                if (parseInt(inputValue) === first * second) {
+                    setResult("정답입니다.");
+                    setInputValue("");
+                    inputEl.current.blur()  // 정답을 맞히면 focus out
+                }
+                else {
+                    setResult("틀렸습니다.");
+                    setInputValue("");
+                    inputEl.current.focus()  // 정답이 아닐 때는 focus 해서 다시 풀도록
+                }
+            }
+
+            const answerColor = () => {
+                if (result === "정답입니다.") return { color: "rgb(0, 124, 52)" };
+                else if (result === "틀렸습니다.") return { color: "red" };
+                else return {};
+            }
+
+            return (
+                // React.Fragment를 쓰는 이유?
+                <React.Fragment>
+                    <div className="quiz">
+                        <div className="box">
+                            <div>{first} 곱하기 {second}는?</div>
+                            <form onSubmit={onSubmitForm}>
+                                <input
+                                    ref={inputEl}
+                                    value={inputValue}
+                                    onChange={(e) => { setInputValue(e.target.value) }}
+                                />
+                                <button>입력!</button>
+                            </form>
+                            <div className="answer" style={answerColor()}>{result}</div>
+                        </div>
+                    </div>
+                </React.Fragment>
+            );
+        }
+
+        const App = () => {
+            return (
+                // React.Fragment를 쓰는 이유?
+                <div className="container">
+                    <header>
+                        <h1>🔥 Quiz Time 🔥</h1>
+                        <p>made by APPS 11기 김준희</p>
+                    </header>
+                    <div className="body-container">
+                        <GuGudan />
+                        <GuGudan />
+                        <GuGudan />
+                        <GuGudan />
+                        <GuGudan />
+                    </div>
+                </div>
+            );
+        }
+    </script>
+
+
+    <script type="text/babel">
+        ReactDOM.render(<App />, document.querySelector('#root'));
+        // 이런 방식 쓰는 이유?
+    </script>
+
+</body>
+
+</html>
