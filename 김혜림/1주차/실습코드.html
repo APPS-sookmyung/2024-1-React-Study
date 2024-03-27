@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>버튼을 누르면 입력한 단어에 느낌표를 붙여서 반환해주는 코드</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  'use strict';
+
+  class WordButton extends React.Component {
+    state={
+        value: '',
+        result: '',
+    };
+    onSubmit=(e)=>{
+        return{
+            result: this.state.value+"!",
+            value:'',
+        };
+    }
+    input;
+    onRefInput = (c) => { this.input = c; };
+    render() {
+      return (
+        <React.Fragment>
+          <div>단어를 입력하세요</div> 
+          <form onSubmit={this.onSubmit}> 
+            <input ref={this.onRefInput} value={this.state.value}/> 
+            <button>입력!</button>
+          </form>
+        </React.Fragment>
+      );
+    }
+  }
+</script>
+<script type="text/babel">
+  ReactDOM.render(<LikeButton/>, document.querySelector('#root'));
+</script>
+</body>
+</html>
