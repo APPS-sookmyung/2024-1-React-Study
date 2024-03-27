@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>구구단</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div> <!-- 결과: <div id="root"><button>Like</button></div> -->
+<script type="text/babel">
+  class GuGuDan extends React.Component {
+    state = {
+      first: Math.ceil(Math.random() * 9),
+      second: Math.ceil(Math.random() * 9),
+      value: '',
+      result: '',
+    }; //컨스터럭터 거의 안쓰꼬 바로 state 선언
+ 
+    onSubmit = (e) => { //여기에 function쓰는거 아님(this가 달라져서, 글자입력이 안됨) 화살표쓰기
+      e.preventDefault();
+      if (parseInt(this.state.value) === this.state.first * this.state.second) {
+        this.setState((prevState) => { //setState안에 함수를 넣음 예전 스테이트의 값으로 새로운 스테이트 리턴
+          return {
+            result: '정답: ' + prevState.value, //this.state.value(현재값)
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '', 
+          };
+        });
+        this.input.focus();
+      } else {
+        this.setState({
+          result: '땡',
+          value: '', //틀렸을경우 지운다
+        });
+        this.input.focus();
+      }
+    };
+
+    onChange = (e) => {
+      this.setState({ value: e.target.value });
+    };
+
+    input;
+
+    onRefInput = (c) => { this.input = c; }; //렌더가 너무 자주 실행되는걸 방지하고자 뺌. 넣으면=<input ref={(c)=>{this.input=c;}} type=~~
+
+    // 컨텐츠
+    render() {
+      return (
+        <React.Fragment>
+          <div>{this.state.first} 곱하기 {this.state.second}는?</div> 
+          <form onSubmit={this.onSubmit}> 
+            <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/> 
+            <button>입력!</button>
+          </form>
+          <div>{this.state.result}</div>
+        </React.Fragment>
+      );
+    }
+  } //onClick, onCharge, onSubmit... //곱하기에 있는 div태그는 없어도됨 //폼은 온서브밋을 쓰기 없으묜 온클릭
+  //render은 화살표 안써도 됨
+  //ref(참조):인풋에 포커스(깜빡깜빡상태)를 주고싶어
+
+</script>
+<script type="text/babel">
+  ReactDOM.render(<div><GuGuDan /><GuGuDan /><GuGuDan /></div>, document.querySelector('#root')); //같은 컴포넌트이지만 다른 스테이트(중복이 줄어듦)
+</script>
+</body>
+</html>
