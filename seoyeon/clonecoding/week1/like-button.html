@@ -1,0 +1,48 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="root"></div>
+    <!-- 타인의 코드를 불러올때 스크립트로 불러옴 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- 실무에서는 아래 스크립트 사용(실제로 사용할 일은 없음) -->
+    <!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+    <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+    <script>
+      "use strict";
+
+      const e = React.createElement;
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { liked: false };
+        }
+
+        render() {
+          if (this.state.liked) {
+            return "You liked this.";
+          }
+
+          return e(
+            "button",
+            { onClick: () => this.setState({ liked: true }) },
+            "Like"
+          );
+        }
+      }
+    </script>
+    <script>
+      //   ReactDOM.render(e(LikeButton), document.querySelector("#root"));
+      ReactDOM.createRoot(document.querySelector("#root")).render(
+        e(LikeButton)
+      );
+    </script>
+  </body>
+</html>
