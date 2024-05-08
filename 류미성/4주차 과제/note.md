@@ -47,3 +47,12 @@
   }
 }
 ```
+
+### 4.15 내부 상태관리 State
+
+리액트에서 변경 가능한 상태는 useState를 써야하고, 내부상태는 useState를 통해서 간직하고 업데이트 해야한다
+const [count, setCount] = useState(0);
+
+> const [count, setCount] = useState(0);
+
+> const [값을 가리키고 있는 변수, 업데이트할 수 있는 함수 ] useState(초기값);
