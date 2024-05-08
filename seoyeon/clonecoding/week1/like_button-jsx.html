@@ -1,0 +1,52 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!-- 바벨 라이브러리 추가하기 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+    <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+    <!-- 바벨 -->
+    <script type="text/babel">
+      "use strict";
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { liked: false };
+        }
+
+        render() {
+          if (this.state.liked) {
+            return "You liked this.";
+          }
+
+          //   return e("button", { onClick: () => this.setState({ liked: true }) }, "Like");
+          return (
+            <button onClick={() => this.setState({ liked: true })}>Like</button>
+            // <button onClick={() => this.setState({ liked: true })}>
+            //   {this.state.liked ? "Liked" : "Like!"} // if문 대신 삼항연산자(for문과 if문을 같이 못 씀)
+            //   {[1, 2, 3].map((i) => { // for문 대신 map
+            //   return <div>i</div>;
+            //   })}
+            // </button>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      //   ReactDOM.render(<LikeButton />, document.querySelector("#root")); // 17v
+      ReactDOM.createRoot(document.querySelector("#root")).render(
+        <LikeButton />
+      ); // 18v
+    </script>
+  </body>
+</html>
