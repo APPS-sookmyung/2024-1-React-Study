@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding: 0;
+}
+.screen{
+    width: 100vw;
+    height: 100vh;
+}
+.sky{
+    width: 100vw;
+    height: 90%;
+    background:skyblue;
+}
+.runningImg{
+    width: 100px;
+}
+.ground{
+    width: 100vw;
+    height: 10%;
+    background-color:saddlebrown;
+}
