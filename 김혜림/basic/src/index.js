@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppProfile from './AppProfile';
 import reportWebVitals from './reportWebVitals';
-import AppCounter from './AppCounter';
-import AppProducts from './AppProducts';
-import AppBook from './assignment/AppBook';
+import AppAnime from './AppAnime ';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode> 
-    <AppBook />
+  <React.StrictMode>
+    <AppAnime /> 
   </React.StrictMode>
 );
 
