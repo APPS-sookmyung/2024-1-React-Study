@@ -1,0 +1,41 @@
+.grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item{
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: beige;
+    box-shadow: 0 6px 5px rgba(0,0,0,0.1);
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.category{
+    font-weight: bold;
+    margin-top: -2px;
+    text-transform: capitalize;
+}
+
+h1, h3{
+    text-align: center;
+}
+
+h3{
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+button{
+    margin-left: 15px;
+    padding: 6px;
+    background-color: rgb(78, 102, 208);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
