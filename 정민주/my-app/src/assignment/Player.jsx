@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react';
 import './Player.css'
-import personReducer from './reducer/player-reducer'
+import personReducer from '../reducer/player-reducer'
 
 export default function Player() {
     const [player, dispatch] = useReducer(personReducer, initialPlayer)
