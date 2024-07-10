@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import CreditCard from './assignment/CreditCard.jsx';
+import PostCssTest from './PostCssTest.jsx';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CreditCard/>
+    <PostCssTest/>
   </React.StrictMode>
 );
 
