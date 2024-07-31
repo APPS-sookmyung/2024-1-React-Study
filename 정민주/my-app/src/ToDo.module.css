@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding:0;
+}
+.frame{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(65,68,81);
+}
+.ToDoFrame{
+    width: 60vw;
+    height: 60vh;
+    background-color: rgb(34,36,58);
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

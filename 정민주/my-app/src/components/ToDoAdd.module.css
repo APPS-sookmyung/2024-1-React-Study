@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  border: 0;
+}
+.AddFrame {
+  height: 15%;
+  background-color: rgb(26, 28, 52);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input {
+  width: 70%;
+  height: 30px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-left: 15px;
+  outline: 0;
+}
+.input::placeholder {
+  font-weight: 550;
+}
+.button {
+  width: 15%;
+  height: 30px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: rgb(239, 131, 52);
+  color: white;
+  font-size: 15px;
+  font-weight: 520;
+}
+.whiteMode {
+  background-color: rgb(245, 245, 245) !important;
+}
