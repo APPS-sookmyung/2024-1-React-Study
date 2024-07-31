@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 
-import PostCssTest from './PostCssTest.jsx';
+import ToDo from './ToDo';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <PostCssTest/>
+    <ToDo/>
   </React.StrictMode>
 );
 
