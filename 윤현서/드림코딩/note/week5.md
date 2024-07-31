@@ -7,6 +7,7 @@
 : 괄호가 없는 화살표 함수는 return 문으로 작동함.
 -> immer의 produce 함수는 void 타입의 함수이므로 return 기능을 실행하여 에러가 나는 것임.
 -> 중괄호로 감싸서 사용하기
+-> 중괄호로 감싸면 return 이라고 명시해야 return 이 실행됨. 함수를 반환하지 않고 실행하기만
 
 #5.14 Form
 Form에서 항상 refresh 되기를 원하지 않는다면 e.preventDefault(); 추가하기

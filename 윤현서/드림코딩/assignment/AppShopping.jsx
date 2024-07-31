@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import cartReducer from './components/reducer/cart-reducer';
+import cartReducer from '../clonecoding/basic/src/components/reducer/cart-reducer';
 import './AppShopping.css';
 
 export default function AppShopping() {
@@ -28,6 +28,7 @@ export default function AppShopping() {
     const handleSort = () => {
         dispatch({type: 'sorted'});
     }
+
     return (
         <div>
             <h1>Shpping Cart</h1>
@@ -46,9 +47,7 @@ export default function AppShopping() {
                     </div>
                 ))}
             </div>
-        </div>
-
-        
+        </div>  
     );
 }
 

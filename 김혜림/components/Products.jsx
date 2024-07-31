@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import useProducts from "../../hooks/use-products";
+import React, {useState } from 'react';
+import useProducts from './hooks/use-products';
 
 export default function Products() {
+  const [loading,error,products]=useProducts({salesOnly:checked});
   const [checked, setChecked] = useState(false);
-  const [count, setCount] = useState(0);
-  const [loading, error, products] = useProducts({ salesOnly: checked });
   const handleChange = () => setChecked((prev) => !prev);
 
-  if (loading) return <p>Loding...</p>;
+  if(loading) return <p>Loading...</p>;
+  if(error) return <p>{error}</p>;
 
-  if (error) return <p>{error}</p>;
   return (
     <>
       <input
-        id="checkbox"
-        type="checkbox"
+        id='checkbox'
+        type='checkbox'
         value={checked}
         onChange={handleChange}
       />
-      <label htmlFor="checkbox">Show Only 🔥 Sale</label>
+      <label htmlFor='checkbox'>Show Only 🔥 Sale</label>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -29,7 +28,6 @@ export default function Products() {
           </li>
         ))}
       </ul>
-      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
     </>
   );
 }
